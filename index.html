@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elizabeth Andeka Bahati — Software Engineer & AI/ML Practitioner</title>
+<meta name="description" content="Elizabeth Bahati — Software Engineer specializing in Laravel, React, and fintech integrations, currently pursuing an MSc in Artificial Intelligence with a focus on NLP for African languages.">
+<meta property="og:title" content="Elizabeth Bahati — Software Engineer & AI/ML Practitioner">
+<meta property="og:description" content="Full-stack engineer (Laravel, React, fintech) building an MSc AI thesis on bilingual loneliness detection for low-resource African contexts.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2310141c'/%3E%3Ctext x='50' y='68' font-size='60' font-family='monospace' fill='%23e0a458' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #10141c;
+    --bg-panel: #171c28;
+    --line: #2c3345;
+    --text: #eef0ea;
+    --text-dim: #9aa2b3;
+    --accent: #e0a458;
+    --accent-dim: #b5824a;
+    --accent2: #7fb8a6;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --display: 'Fraunces', serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(224,164,88,0.07), transparent 40%),
+      radial-gradient(circle at 85% 60%, rgba(127,184,166,0.05), transparent 45%);
+  }
+
+  ::selection { background: var(--accent); color: #10141c; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .noise {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(10px);
+    background: rgba(13,15,12,0.85);
+    border-bottom: 1px solid var(--line);
+  }
+  header.top .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  nav { display: flex; gap: 28px; font-family: var(--mono); font-size: 13px; color: var(--text-dim); }
+  nav a { transition: color .2s; position: relative; }
+  nav a:hover { color: var(--accent); }
+
+  section { position: relative; z-index: 2; }
+
+  /* HERO */
+  .hero {
+    padding: 120px 0 100px;
+    position: relative;
+  }
+  .hero .tag {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase; display: flex; align-items: center; gap: 10px;
+    margin-bottom: 28px;
+  }
+  .tag::before {
+    content: ''; width: 8px; height: 8px; background: var(--accent); border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent); animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 220px; gap: 48px; align-items: start;
+  }
+
+  h1.name {
+    font-family: var(--display); font-weight: 600; font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.98; letter-spacing: -0.02em; margin-bottom: 24px;
+  }
+  h1.name em { font-style: italic; font-weight: 500; color: var(--accent); }
+
+  .hero-lede {
+    font-size: 19px; color: var(--text-dim); max-width: 58ch; margin-bottom: 36px;
+  }
+
+  .photo-frame {
+    width: 220px; height: 220px; border: 1px solid var(--line);
+    background: var(--bg-panel);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    font-family: var(--mono); font-size: 11px; color: var(--text-dim); text-align: center;
+  }
+  .photo-frame::before, .photo-frame::after {
+    content: ''; position: absolute; width: 18px; height: 18px; border: 1px solid var(--accent);
+  }
+  .photo-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .photo-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: none; }
+
+  .currently {
+    font-size: 14.5px; color: var(--text-dim); border-left: 2px solid var(--accent);
+    padding: 10px 0 10px 16px; margin-bottom: 32px; max-width: 52ch;
+  }
+  .currently-label {
+    font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase;
+    letter-spacing: 0.08em; display: block; margin-bottom: 4px;
+  }
+
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono); font-size: 13px; padding: 12px 22px;
+    border: 1px solid var(--line); transition: all .2s; letter-spacing: 0.03em;
+  }
+  .btn.primary { background: var(--accent); color: #10141c; border-color: var(--accent); font-weight: 600; }
+  .btn.primary:hover { background: transparent; color: var(--accent); }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SECTION HEADERS */
+  .section-head {
+    display: flex; align-items: baseline; gap: 16px; margin-bottom: 44px;
+  }
+  .section-num { font-family: var(--mono); color: var(--accent-dim); font-size: 14px; }
+  .section-title { font-family: var(--display); font-size: 34px; font-weight: 600; }
+  .section-head .rule { flex: 1; height: 1px; background: var(--line); }
+
+  section.block { padding: 90px 0; border-top: 1px solid var(--line); }
+
+  /* ABOUT */
+  .about-text { font-size: 17px; color: var(--text-dim); max-width: 68ch; }
+  .about-text p + p { margin-top: 18px; }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+    gap: 24px; margin-top: 44px;
+  }
+  .skill-cat {
+    border: 1px solid var(--line); padding: 20px; background: var(--bg-panel);
+  }
+  .skill-cat h4 {
+    font-family: var(--mono); font-size: 12px; color: var(--accent); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 12px;
+  }
+  .skill-cat ul { list-style: none; font-size: 14px; color: var(--text-dim); }
+  .skill-cat li { padding: 3px 0; }
+
+  /* EXPERIENCE */
+  .job {
+    display: grid; grid-template-columns: 160px 1fr; gap: 24px;
+    padding: 28px 0; border-bottom: 1px solid var(--line);
+  }
+  .job:last-child { border-bottom: none; }
+  .job-date { font-family: var(--mono); font-size: 12px; color: var(--text-dim); padding-top: 4px; }
+  .job-role { font-size: 18px; font-weight: 600; margin-bottom: 2px; }
+  .job-org { font-family: var(--mono); font-size: 13px; color: var(--accent-dim); margin-bottom: 12px; }
+  .job ul { padding-left: 18px; color: var(--text-dim); font-size: 15px; }
+  .job li { margin-bottom: 6px; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px; }
+  .project-card {
+    border: 1px solid var(--line); background: var(--bg-panel); padding: 28px;
+    transition: transform .25s, border-color .25s; position: relative; overflow: hidden;
+  }
+  .project-card:hover { transform: translateY(-4px); border-color: var(--accent-dim); }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent);
+    transform: scaleY(0); transform-origin: top; transition: transform .3s;
+  }
+  .project-card:hover::before { transform: scaleY(1); }
+  .project-num { font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
+  .project-card h3 { font-family: var(--display); font-size: 21px; margin-bottom: 10px; }
+  .project-card p { font-size: 14.5px; color: var(--text-dim); margin-bottom: 16px; }
+  .stack-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    font-family: var(--mono); font-size: 11px; color: var(--accent-dim);
+    border: 1px solid var(--line); padding: 4px 9px;
+  }
+
+  /* CONTACT */
+  .contact-block { text-align: center; padding: 100px 0 120px; }
+  .contact-block h2 {
+    font-family: var(--display); font-size: clamp(36px,6vw,60px); font-weight: 600; margin-bottom: 20px;
+  }
+  .contact-block p { color: var(--text-dim); margin-bottom: 40px; }
+  .contact-links { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+  .contact-links a {
+    font-family: var(--mono); font-size: 13px; border: 1px solid var(--line); padding: 12px 20px;
+    transition: all .2s;
+  }
+  .contact-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 28px 0;
+    font-family: var(--mono); font-size: 12px; color: var(--text-dim);
+    display: flex; justify-content: space-between;
+  }
+
+  @media (max-width: 700px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .photo-frame { width: 140px; height: 140px; }
+    .job { grid-template-columns: 1fr; }
+    nav { gap: 16px; font-size: 12px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">E. BAHATI</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="tag">Available for opportunities</div>
+        <h1 class="name">Elizabeth<br>Andeka<br>Bahati<span></span></h1>
+        <p class="hero-lede">
+          Software Engineer & AI/ML Practitioner; building intelligent systems 
+          <em style="color:var(--text); font-style:normal;">Laravel, React, and payment rails that just work.</em>
+          Currently pursuing an <em style="color:var(--accent); font-style:normal;">MSc in Artificial Intelligence</em>, bringing emerging expertise in AI-driven workflow automation.
+        </p>
+        <div class="currently">
+          <span class="currently-label">Currently</span>
+          Building a bilingual English–Swahili corpus for AI-driven loneliness detection ; my MSc thesis at JKUAT.
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#projects">View Work</a>
+          <a class="btn ghost" href="#contact">Get in Touch</a>
+          <a class="btn ghost" href="Elizabeth_Bahati.pdf" download>Download Résumé</a>
+        </div>
+      </div>
+      <div class="photo-frame" id="photoFrame">
+        <span>PHOTO<br>PLACEHOLDER</span>
+        <img id="photoImg" src="photo.jpeg" alt="Elizabeth Andeka Bahati">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="about-text">
+      <p>
+        I'm a <strong>results-driven Software Engineer</strong> with 2+ years of experience building
+        full-stack web applications across Kenya's fast-paced tech sector. My work centers on
+        <strong>Laravel and React</strong>, with a proven track record delivering payment integrations
+        (M-Pesa, Stripe, PayPal), RESTful APIs, and multi-tenant SaaS systems for real businesses 
+        from schools digitizing fee collection to HR platforms running payroll for hundreds of employees.
+      </p>
+      <p>
+        I'm currently deepening that foundation with an <strong>MSc in Artificial Intelligence</strong>,
+        exploring how machine learning and workflow automation can extend what well-engineered software
+        can do. I care about writing clean, scalable code that solves real business problems not just
+        elegant code for its own sake.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h4>Languages</h4>
+        <ul><li>PHP</li><li>JavaScript / TypeScript</li><li>SQL</li><li>Python</li></ul>
+      </div>
+      <div class="skill-cat">
+        <h4>Frameworks</h4>
+        <ul><li>Laravel</li><li>React</li><li>Chart.js</li></ul>
+      </div>
+      <div class="skill-cat">
+        <h4>Integrations</h4>
+        <ul><li>M-Pesa</li><li>Stripe / PayPal</li><li>Laravel Sanctum</li><li>RESTful APIs</li></ul>
+      </div>
+      <div class="skill-cat">
+        <h4>Architecture</h4>
+        <ul><li>Multi-tenancy</li><li>RBAC</li><li>Microservices</li></ul>
+      </div>
+      <div class="skill-cat">
+        <h4>Tools</h4>
+        <ul><li>Docker</li><li>Linux</li><li>Git / GitHub</li></ul>
+      </div>
+      <div class="skill-cat">
+        <h4>Other</h4>
+        <ul><li>Prompt Engineering</li><li>UI/UX Principles</li><li>Agile Development</li></ul>
+      </div>
+      <div class="skill-cat" style="border-color: var(--accent2);">
+        <h4 style="color: var(--accent2);">AI / ML</h4>
+        <ul><li>Python, PyTorch</li><li>NLP &amp; BERT fine-tuning</li><li>Corpus &amp; annotation design</li><li>Model evaluation</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Nov 2025 — Present</div>
+      <div>
+        <div class="job-role">IT Officer</div>
+        <div class="job-org">Digital Literacy Programme · Kenya</div>
+        <ul>
+          <li>Delivered structured training on laptop and tablet use to teachers and students in public schools.</li>
+          <li>Developed training materials and led hands-on sessions, strengthening technical communication and leadership skills.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Aug — Sep 2025</div>
+      <div>
+        <div class="job-role">AI Training Data Specialist</div>
+        <div class="job-org">Bogner &amp; Partners · Nairobi</div>
+        <ul>
+          <li>Designed and implemented AI-driven workflows to automate website generation, reducing manual build time significantly.</li>
+          <li>Applied prompt engineering best practices to optimize LLM outputs for production-ready web content.</li>
+          <li>Translated client requirements into iterative architecture decisions, balancing performance and UX.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Jan — Jun 2025</div>
+      <div>
+        <div class="job-role">Junior Software Developer</div>
+        <div class="job-org">Vasmobile Fintelco · Nairobi</div>
+        <ul>
+          <li>Built and maintained full-stack applications using Laravel and React to digitize fee collection across multiple institutions.</li>
+          <li>Integrated M-Pesa, Stripe, and PayPal payment gateways, enabling seamless real-time transactions.</li>
+          <li>Automated invoicing pipelines and developed financial reporting dashboards for management use.</li>
+          <li>Implemented multi-tenant architecture to support multiple client organizations on a single codebase.</li>
+          <li>Managed Linux-based server environments and containerized services using Docker.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Oct — Dec 2024</div>
+      <div>
+        <div class="job-role">Software Developer Intern</div>
+        <div class="job-org">Shiva Software Africa · Nairobi</div>
+        <ul>
+          <li>Implemented Role-Based Access Control (RBAC) for an HR and car wash management system using Laravel Sanctum.</li>
+          <li>Developed a payroll computation engine handling tax deductions, bonuses, overtime, and M-Pesa disbursements.</li>
+          <li>Built employee performance analytics and financial reporting dashboards using Chart.js and Laravel Excel.</li>
+          <li>Designed a calendar-based appointment scheduling system with real-time slot availability for car wash bookings.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num" style="color: var(--accent2);">03</span>
+      <h2 class="section-title">AI &amp; Research</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="project-card" style="margin-bottom: 24px; border-color: var(--accent2);">
+      <div class="project-num" style="color: var(--accent2);">MSc THESIS · IN PROGRESS</div>
+      <h3>Towards Culturally Adaptive Loneliness Detection</h3>
+      <p>A Bilingual Corpus and Machine Learning Framework for Low-Resource African Contexts. Serving as data lead
+      on a collaborative thesis project, building a bilingual English-Swahili annotated text corpus for loneliness
+      detection — culturally grounded for Kenyan contexts — alongside an ML framework for downstream detection.</p>
+      <div class="stack-pills">
+        <span class="pill" style="color: var(--accent2);">NLP</span><span class="pill" style="color: var(--accent2);">Bilingual Corpus</span><span class="pill" style="color: var(--accent2);">Annotation Design</span><span class="pill" style="color: var(--accent2);">Low-Resource ML</span>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-num">Coursework</div>
+        <h3>CNN Image Classification</h3>
+        <p>Convolutional neural network trained from scratch on CIFAR-10, reaching ~94% train / ~80% validation accuracy.</p>
+        <div class="stack-pills"><span class="pill">PyTorch</span><span class="pill">CNN</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">Coursework</div>
+        <h3>BERT NER Fine-Tuning</h3>
+        <p>Fine-tuned a BERT model via HuggingFace for named entity recognition on the CoNLL-2003 dataset.</p>
+        <div class="stack-pills"><span class="pill">BERT</span><span class="pill">HuggingFace</span><span class="pill">NLP</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">Coursework</div>
+        <h3>Plant Leaf Disease Classifier</h3>
+        <p>ResNet-18 with ImageNet transfer learning on PlantVillage, classifying 38 disease categories.</p>
+        <div class="stack-pills"><span class="pill">ResNet-18</span><span class="pill">Transfer Learning</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-num">/ 01</div>
+        <h3>Fee Collection &amp; Invoicing Platform</h3>
+        <p>Full-stack SaaS application for schools to manage student fees, generate invoices, and track payments with live M-Pesa integration.</p>
+        <div class="stack-pills">
+          <span class="pill">Laravel</span><span class="pill">React</span><span class="pill">M-Pesa</span><span class="pill">Multi-tenant</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">/ 02</div>
+        <h3>HR &amp; Payroll Management System</h3>
+        <p>Multi-module HR system with a payroll engine, RBAC, employee analytics, and M-Pesa-based salary disbursement.</p>
+        <div class="stack-pills">
+          <span class="pill">Laravel</span><span class="pill">React</span><span class="pill">TypeScript</span><span class="pill">RBAC</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">/ 03</div>
+        <h3>Car Wash Booking &amp; Operations Platform</h3>
+        <p>Real-time calendar-based booking system with revenue analytics, shift scheduling, and online payment support.</p>
+        <div class="stack-pills">
+          <span class="pill">Laravel</span><span class="pill">Chart.js</span><span class="pill">Scheduling</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">/ 04</div>
+        <h3>Animal Feeds Management System</h3>
+        <p>Capstone project: an end-to-end inventory and supply chain web application for feed production and distribution.</p>
+        <div class="stack-pills">
+          <span class="pill">Full-Stack</span><span class="pill">Inventory</span><span class="pill">Capstone</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Education</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Sep 2025 — Present</div>
+      <div>
+        <div class="job-role">MSc Artificial Intelligence</div>
+        <div class="job-org">In progress</div>
+        <ul><li>Deepening expertise in machine learning, neural networks, and AI systems design.</li></ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Sep 2020 — Dec 2024</div>
+      <div>
+        <div class="job-role">BSc Applied Computing — Software Development</div>
+        <div class="job-org">Coursework: Full-Stack Development, Data Structures &amp; Algorithms, Networking, Programming</div>
+        <ul><li>Capstone: Animal Feeds Management System — an end-to-end inventory and supply chain web application.</li></ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">May — Aug 2021</div>
+      <div>
+        <div class="job-role">Cisco Certified Network Associate (CCNA)</div>
+        <div class="job-org">Certification</div>
+        <ul><li>Network configuration, troubleshooting, VLANs, IP addressing, security, and automation.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-block" id="contact">
+  <div class="wrap">
+    <span class="section-num" style="display:block; margin-bottom:16px;">06 / Contact</span>
+    <h2>Let's build<br>something.</h2>
+    <p>Nairobi, Kenya — open to full-stack, fintech, and AI-adjacent roles.</p>
+    <div class="contact-links">
+      <a href="mailto:elizabethandeka@gmail.com">elizabethandeka@gmail.com</a>
+      <a href="tel:+254758185606">+254 758 185 606</a>
+      <a href="https://github.com/Ebahati" target="_blank" rel="noopener">github.com/Ebahati</a>
+      <a href="https://linkedin.com/in/elizabeth-bahati" target="_blank" rel="noopener">linkedin.com/in/elizabeth-bahati</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%;">
+    <span>© 2026 Elizabeth Bahati</span>
+    <span>Built with intent, in Nairobi.</span>
+  </div>
+</footer>
+
+</body>
+</html>
